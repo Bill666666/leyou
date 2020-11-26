@@ -55,6 +55,10 @@ public class CategoryService {
         return Arrays.asList(c1,c2,c3);
     }
 
+    public void saveCategory(Category category) {
+        this.categoryMapper.insertSelective(category);
+    }
+
     //根据商品分类id查询名称
     /*public List<String> queryNameByIds(List<Long> ids) {
         return this.categoryMapper.selectByIdList(ids).stream().map(Category::getName).collect(Collectors.toList());

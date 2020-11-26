@@ -39,6 +39,12 @@ public class CategoryController {
         return ResponseEntity.ok(list);
     }
 
+    @PostMapping
+    public ResponseEntity<Void> saveCategory(Category category){
+        this.categoryService.saveCategory(category);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     /**
      * 通过品牌id查询商品分类
      * @param bid
