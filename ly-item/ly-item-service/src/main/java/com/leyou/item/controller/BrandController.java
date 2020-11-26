@@ -63,6 +63,14 @@ public class BrandController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    //删除品牌
+    @DeleteMapping
+    public ResponseEntity<Void> deleteBrand(@RequestParam("bid") String bid){
+
+        this.brandService.deleteBrand(Long.valueOf(bid));
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     /**
      * 根据分类查询品牌
      * @param cid

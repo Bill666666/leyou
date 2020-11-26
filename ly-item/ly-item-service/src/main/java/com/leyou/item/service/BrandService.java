@@ -46,6 +46,11 @@ public class BrandService {
 
     }
 
+    /**
+     * 新增品牌
+     * @param brand
+     * @param cids
+     */
     @Transactional
     public void saveBrand(Brand brand, List<Long> cids) {
         //新增品牌信息
@@ -56,6 +61,11 @@ public class BrandService {
         }
     }
 
+    /**
+     * 修改品牌
+     * @param brand
+     * @param cids
+     */
     @Transactional
     public void updateBrand(Brand brand, List<Long> cids) {
         //先删除和分类的所有关系,然后重新建立关系
@@ -66,6 +76,15 @@ public class BrandService {
         for (Long cid : cids) {
             this.brandMapper.insertCategoryBrand(cid,brand.getId());
         }
+    }
+
+
+    @Transactional
+    public void deleteBrand(Long bid) {
+        //先删除和分类的所有关系,然后重新建立关系
+        this.brandMapper.deleteBrandCategory(bid);
+        //再删除品牌
+        this.brandMapper.deleteByPrimaryKey(bid);
     }
 
     public List<Brand> queryBrandByCategory(Long cid) {
