@@ -33,6 +33,24 @@ public class SpecificationController {
         return ResponseEntity.ok(list);
     }
 
+    @PostMapping("group")
+    public ResponseEntity<Void> saveSpecGroup(SpecGroup specGroup){
+        this.specificationService.saveSpecGroup(specGroup);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("group")
+    public ResponseEntity<Void> updateSpecGroup(SpecGroup specGroup){
+        this.specificationService.updateSpecGroup(specGroup);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("group/{id}")
+    public ResponseEntity<Void> deleteSpecGroup(@PathVariable("id") Long gid){
+        this.specificationService.deleteSpecGroupById(gid);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     @GetMapping("/params")
     public ResponseEntity<List<SpecParam>> querySpecParam(
             @RequestParam(value = "gid",required = false) Long gid,

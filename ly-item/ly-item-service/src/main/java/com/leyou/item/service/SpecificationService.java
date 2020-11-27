@@ -6,6 +6,7 @@ import com.leyou.item.pojo.SpecGroup;
 import com.leyou.item.pojo.SpecParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -49,5 +50,20 @@ public class SpecificationService {
             g.setParams(querySpecParams(g.getId(),null,null,null));
         });
         return groups;
+    }
+
+    @Transactional
+    public void deleteSpecGroupById(Long gid) {
+        //TODO
+        //需要先删除参数表的关联数据specParamMapper
+        this.specGroupMapper.deleteByPrimaryKey(gid);
+    }
+
+    public void saveSpecGroup(SpecGroup specGroup) {
+        this.specGroupMapper.insert(specGroup);
+    }
+
+    public void updateSpecGroup(SpecGroup specGroup) {
+        this.specGroupMapper.updateByPrimaryKeySelective(specGroup);
     }
 }
