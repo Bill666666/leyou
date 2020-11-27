@@ -59,6 +59,18 @@ public class CategoryService {
         this.categoryMapper.insertSelective(category);
     }
 
+    public void updateCategory(Long cid, String name) {
+        Category category = new Category();
+        category.setId(cid);
+        Category queryCategory = this.categoryMapper.selectOne(category);
+        queryCategory.setName(name);
+        this.categoryMapper.updateByPrimaryKeySelective(queryCategory);
+    }
+
+    public void deleteCategory(Long cid) {
+        this.categoryMapper.deleteByPrimaryKey(cid);
+    }
+
     //根据商品分类id查询名称
     /*public List<String> queryNameByIds(List<Long> ids) {
         return this.categoryMapper.selectByIdList(ids).stream().map(Category::getName).collect(Collectors.toList());

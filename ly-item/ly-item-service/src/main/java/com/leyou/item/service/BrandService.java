@@ -78,7 +78,10 @@ public class BrandService {
         }
     }
 
-
+    /**
+     * 删除品牌
+     * @param bid
+     */
     @Transactional
     public void deleteBrand(Long bid) {
         //先删除和分类的所有关系,然后重新建立关系

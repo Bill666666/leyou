@@ -39,9 +39,37 @@ public class CategoryController {
         return ResponseEntity.ok(list);
     }
 
+    /**
+     * 新增节点
+     * @param category
+     * @return
+     */
     @PostMapping
     public ResponseEntity<Void> saveCategory(Category category){
         this.categoryService.saveCategory(category);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    /**
+     * 修改节点
+     * @param cid
+     * @param name
+     * @return
+     */
+    @PutMapping
+    public ResponseEntity<Void> updateCategory(@RequestParam("cid") Long cid,@RequestParam("name") String name){
+        this.categoryService.updateCategory(cid,name);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    /**
+     * 删除节点
+     * @param cid
+     * @return
+     */
+    @DeleteMapping
+    public ResponseEntity<Void> deleteCategory(@RequestParam("cid") Long cid){
+        this.categoryService.deleteCategory(cid);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
