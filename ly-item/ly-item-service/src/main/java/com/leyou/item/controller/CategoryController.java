@@ -45,9 +45,15 @@ public class CategoryController {
      * @return
      */
     @PostMapping
-    public ResponseEntity<Void> saveCategory(Category category){
-        this.categoryService.saveCategory(category);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Long> saveCategory(Category category){
+        try {
+            Long cid = this.categoryService.saveCategory(category);
+            return ResponseEntity.ok(cid);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     /**

@@ -5,6 +5,7 @@ import com.leyou.item.pojo.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sound.midi.SoundbankResource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -55,8 +56,14 @@ public class CategoryService {
         return Arrays.asList(c1,c2,c3);
     }
 
-    public void saveCategory(Category category) {
-        this.categoryMapper.insertSelective(category);
+    public Long saveCategory(Category category) throws Exception {
+        //this.categoryMapper.insertSelective(category);
+        Long aLong = this.categoryMapper.insertCategory(category);
+        if (aLong < 0) {
+            throw new Exception("新增分类失败");
+        } else {
+            return category.getId();
+        }
     }
 
     public void updateCategory(Long cid, String name) {
