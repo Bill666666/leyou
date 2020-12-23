@@ -18,7 +18,9 @@ public class GlobalCorsConfig {
         config.addAllowedOrigin("http://127.0.0.1:9001");
         config.addAllowedOrigin("http://122.112.198.158:2091");
 
-        config.addAllowedOrigin("http://www.leyou.com");
+        //config.addAllowedOrigin("http://www.leyou.com");
+        config.addAllowedOrigin("http://127.0.0.1:2091");
+        config.addAllowedOrigin("http://122.112.198.158:2091");
         //2) 是否发送Cookie信息
         config.setAllowCredentials(true);
         //3) 允许的请求方式

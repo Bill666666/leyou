@@ -17,7 +17,7 @@ import java.util.List;
  * Time: 19:17
  */
 @RestController
-@RequestMapping("category")
+@RequestMapping(value = "category")
 public class CategoryController {
 
     @Autowired
@@ -62,7 +62,7 @@ public class CategoryController {
      * @param name
      * @return
      */
-    @PutMapping
+    @PutMapping(produces = "application/x-www-form-urlencoded;charset=UTF-8")
     public ResponseEntity<Void> updateCategory(@RequestParam("cid") Long cid,@RequestParam("name") String name){
         this.categoryService.updateCategory(cid,name);
         return new ResponseEntity<>(HttpStatus.CREATED);
