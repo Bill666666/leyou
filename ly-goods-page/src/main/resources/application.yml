@@ -23,4 +23,5 @@ eureka:
     instance-id: ${spring.application.name}.${server.port}
 ly:
   thymeleaf:
-    destPath: D:/javatool/nginx-1.12.2/html/item
+    #destPath: D:/javatool/nginx-1.12.2/html/item
+    destPath: /usr/share/nginx/html/item
